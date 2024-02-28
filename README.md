@@ -1,34 +1,31 @@
-# AAC-Clydespace Avionics Software Challenge
-You are given the LIS3MDLTR 3-Axis Magnetometer sensor. The data sheet is
-located at `doc/lism3mdl.pdf`
+# LIS3MDL Driver
 
-## Task Description
-You must use the C API defined in `i2c.h` to operate on an I2C bus.
+This repository contains a C driver for the LIS3MDL magnetometer sensor. The driver enables communication with the sensor over the I2C interface, allowing users to configure the sensor, read data from it, and control its settings.
 
-We provide example stub implementations of this API in `i2c.c`. You are free to
-extend the provided stub functions for the API.
+## Usage
 
-Please write a device driver that implements the following API:
-- Get the full-scale configuration
-- Get and set the output data rate
-- Enable or disable the interrupt pin
-- Read the output data of a specified axis
+1. Clone or download this repository.
+2. Add the `lis3mdl_driver.c` and `lis3mdl_driver.h` files to your project.
+3. Ensure that you have an I2C driver integrated into your project.
 
-## Development
-You are provided this minimal repository, `aac-code-challenge`, please perform
-your work on branch `<candidate_name>`
+## Functions
 
-Documentation can be found in `aac-code-challenge/doc`
+- `lis3mdl_get_full_scale(bus_address)`: Get full-scale configuration of the sensor.
+- `lis3mdl_get_output_data_rate(bus_address)`: Get output data rate of the sensor.
+- `lis3mdl_set_output_data_rate(bus_address, rate)`: Set output data rate of the sensor.
+- `lis3mdl_set_interrupt_pin(bus_address, enable)`: Enable/disable interrupt pin.
+- `lis3mdl_read_axis_data(bus_address, axis)`: Read output data of a specified axis.
 
-Once complete, please repackage and email back this repo to your interviewers
+## Example
 
-## Scope
-You shouldn't need to spend more than a couple of hours on the task.
+```c
+#include <stdio.h>
+#include "lis3mdl_driver.h"
 
-This is not a closed book assessment.
+int main() {
+    // Initialize sensor and configure settings
 
-## Extra Thoughts
-If you have time, answer the following questions:
-- What changes you would make to this interfaces for use in an RTOS
-environment?
-- How might the I2C API be improved
+    // Read sensor data
+
+    return 0;
+}
